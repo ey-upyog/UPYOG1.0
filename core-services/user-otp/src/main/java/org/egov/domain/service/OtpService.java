@@ -51,6 +51,7 @@ public class OtpService {
             throw new UserNotExistingInSystemException();
 
         final String otpNumber = otpRepository.fetchOtp(otpRequest);
+        log.info("Dear Citizen, Your OTP to complete your mSeva Registration for Mobile No - "+otpRequest.getMobileNumber()+" is "+otpNumber);
         otpSMSSender.send(otpRequest, otpNumber);
     }
 
